@@ -17,6 +17,18 @@ const Header: React.FC = () => {
   };
 
   React.useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
+  React.useEffect(() => {
     const menu = menuRef.current;
 
     if (!menu) return;
@@ -27,7 +39,7 @@ const Header: React.FC = () => {
       gsap.to(menu, {
         y: "0%",
         opacity: 1,
-        duration: 0.6,
+        duration: 0.45,
         ease: "power4.out",
       });
     } else {
@@ -35,29 +47,56 @@ const Header: React.FC = () => {
       gsap.to(menu, {
         y: "-100%",
         opacity: 0,
-        duration: 0.5,
+        duration: 0.45,
         ease: "power3.in",
       });
     }
   }, [isMenuOpen]);
 
   return (
-    <header className="sticky top-0 bg-[#2f2f2f]">
-      <div className="flex p-5 items-center gap-5">
-        <h2 className="grow-1 flex ">Lascore</h2>
+    <header className="sticky top-0 bg-[#2f2f2f] text-white z-50 shadow-md">
+      <div className="flex justify-between items-center max-w-6xl mx-auto p-4 md:px-8">
+
+        {/* logo */}
+        <h2 className="text-xl font-semibold tracking-wide select-none">
+          Lascore
+        </h2>
+
+        {/* Menú desktop */}
+        <nav className="hidden md:flex gap-8 text-sm font-medium uppercase">
+          {links.map((link, i) => (
+            <a
+              key={i}
+              href="#"
+              onMouseEnter={() => handlerLinkHovered(i)}
+              onMouseLeave={() => handlerLinkHovered(10)}
+              className="relative transition-all duration-200 ease-in-out hover:text-gray-300"
+            >
+              {link}
+              <span
+                className={`absolute -bottom-1 left-0 h-0.5 bg-white transition-all duration-200 ease-in-out ${
+                  linkHovered === i ? "w-full opacity-100" : "w-0 opacity-0"
+                }`}
+              />
+            </a>
+          ))}
+        </nav>
+
+        {/* Burger menu button */}
         <button
           onClick={() => handlerBurgerMenuButton(true)}
-          className=" md:hidden"
+          className="md:hidden text-2xl"
         >
-          <MdMenu />
+          <MdMenu className="cursor-pointer"/>
         </button>
       </div>
 
+      {/* mobile menu */}
       <div
         ref={menuRef}
-        className="fixed inset-0 flex flex-col gap-5 p-5 w-screen h-screen bg-[#2f2f2f] font-bold md:hidden hidden"
+        className={`fixed inset-0 flex flex-col gap-5 p-5 w-screen h-screen bg-[#2f2f2f] font-bold md:hidden ${isMenuOpen ? "" : "hidden"}`}
       >
-        <div className="w-full flex justify-end" id="menu-bar-options">
+        <div className="w-full flex justify-end">
           <button
             onClick={() => handlerBurgerMenuButton(false)}
             className="cursor-pointer text-2xl transition duration-100 ease-in-out relative active:scale-85"
