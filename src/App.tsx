@@ -1,4 +1,5 @@
 import "./App.css";
+import Footer from "./components/footerComponent/Footer";
 import Header from "./components/headerComponent/Header";
 import Section from "./components/sectionComponent/Section";
 
@@ -16,6 +17,7 @@ function App() {
           </p>
         </div>
       </Section>
+      <Footer></Footer>
     </>
   );
 }
