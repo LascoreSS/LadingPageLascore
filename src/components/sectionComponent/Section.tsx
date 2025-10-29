@@ -11,7 +11,7 @@ const Section: React.FC<SectionProps> = ({ children, className, id }) => {
     <section
       id={id}
       className={`section-base ${
-        className || "h-screen flex justify-center bg-[#f1eada] p-[4rem]"
+        className || "h-screen flex justify-center bg-[#f1eada] p-16"
       }`}
     >
       {children}
