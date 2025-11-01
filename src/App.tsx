@@ -2,11 +2,12 @@ import "./App.css";
 import Footer from "./components/footerComponent/Footer";
 import Header from "./components/headerComponent/Header";
 import Section from "./components/sectionComponent/Section";
+import { TestimonialsCarousel } from "./sections/quotesSection/TestimonialsCarousel";
 
 function App() {
   return (
     <>
-      <Header></Header>
+      <Header />
       <Section id="home">
         <div className="max-w-7xl">
           <h2 className="text-[#584738] font-bold text-6xl">Lascore</h2>
@@ -17,7 +18,8 @@ function App() {
           </p>
         </div>
       </Section>
-      <Footer></Footer>
+      <TestimonialsCarousel />
+      <Footer />
     </>
   );
 }
