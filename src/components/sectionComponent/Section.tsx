@@ -10,9 +10,7 @@ const Section: React.FC<SectionProps> = ({ children, className, id }) => {
   return (
     <section
       id={id}
-      className={`section-base ${
-        className || "h-screen flex justify-center bg-[#f1eada] p-16"
-      }`}
+      className={`section-base h-screen flex justify-center md:p-16 ${className}`}
     >
       {children}
     </section>

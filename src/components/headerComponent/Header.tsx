@@ -54,9 +54,8 @@ const Header: React.FC = () => {
   }, [isMenuOpen]);
 
   return (
-    <header className="sticky top-0 bg-[#2f2f2f] text-white z-50 shadow-md">
+    <header className="sticky top-0 bg-[#2b7fff] text-white z-50">
       <div className="flex justify-between items-center max-w-6xl mx-auto p-4 md:px-8">
-
         {/* logo */}
         <h2 className="text-xl font-semibold tracking-wide select-none">
           Lascore
@@ -87,14 +86,16 @@ const Header: React.FC = () => {
           onClick={() => handlerBurgerMenuButton(true)}
           className="md:hidden text-2xl"
         >
-          <MdMenu className="cursor-pointer"/>
+          <MdMenu className="cursor-pointer" />
         </button>
       </div>
 
       {/* mobile menu */}
       <div
         ref={menuRef}
-        className={`fixed inset-0 flex flex-col gap-5 p-5 w-screen h-screen bg-[#2f2f2f] font-bold md:hidden ${isMenuOpen ? "" : "hidden"}`}
+        className={`fixed inset-0 flex flex-col gap-5 p-5 w-screen h-screen bg-[#2f2f2f] font-bold md:hidden ${
+          isMenuOpen ? "" : "hidden"
+        }`}
       >
         <div className="w-full flex justify-end">
           <button
